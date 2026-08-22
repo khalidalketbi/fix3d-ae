@@ -1,474 +1,54 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0b0b0b">
-  <title>FIX3D.AE — Premium 3D Printed Products</title>
-  <meta name="description" content="Premium 3D printed products and custom parts made in the UAE.">
-  <style>
-    :root{
-      --bg:#0a0a0a;
-      --panel:#111;
-      --panel2:#171717;
-      --text:#f7f4ee;
-      --muted:#a8a29a;
-      --line:#282828;
-      --orange:#ff7a2f;
-      --orange2:#ff9a57;
-      --radius:22px;
-      --shadow:0 18px 60px rgba(0,0,0,.38);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 85% 0%,rgba(255,122,47,.10),transparent 26rem),
-        var(--bg);
-    }
-    a{text-decoration:none;color:inherit}
-    button{font:inherit}
-    img{display:block;max-width:100%}
-    .wrap{width:min(1180px,92vw);margin:auto}
-
-    .announcement{
-      padding:10px 16px;text-align:center;font-size:12px;
-      color:#d2cdc6;background:#0d0d0d;border-bottom:1px solid #1d1d1d;
-      letter-spacing:.25px
-    }
-
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(10,10,10,.86);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-    .brand{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:900;letter-spacing:-1px}
-    .cube{
-      width:36px;height:36px;border:2px solid var(--orange);border-radius:10px;
-      position:relative;box-shadow:inset 0 0 0 4px rgba(255,122,47,.06)
-    }
-    .cube:before,.cube:after{content:"";position:absolute;background:var(--orange)}
-    .cube:before{width:13px;height:13px;left:9px;top:9px;transform:rotate(45deg);border-radius:2px}
-    .cube:after{width:4px;height:4px;right:5px;bottom:5px;border-radius:1px}
-    .navlinks{display:flex;gap:28px;color:#c9c4bc;font-size:14px}
-    .navlinks a:hover{color:white}
-    .actions{display:flex;gap:10px;align-items:center}
-    .pill{
-      border:1px solid var(--line);background:#131313;color:white;border-radius:999px;
-      padding:11px 15px;cursor:pointer
-    }
-
-    .hero{padding:42px 0 38px}
-    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px}
-    .hero-copy,.hero-media{
-      min-height:600px;border-radius:30px;border:1px solid var(--line);
-      overflow:hidden;box-shadow:var(--shadow)
-    }
-    .hero-copy{
-      background:
-        linear-gradient(140deg,rgba(255,122,47,.10),transparent 42%),
-        linear-gradient(180deg,#121212,#0d0d0d);
-      padding:58px;display:flex;flex-direction:column;justify-content:center
-    }
-    .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--orange2);font-weight:800}
-    h1{font-size:clamp(54px,7vw,94px);line-height:.92;letter-spacing:-5px;margin:16px 0 22px}
-    .hero-copy p{font-size:19px;line-height:1.6;color:var(--muted);max-width:590px}
-    .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .btn{
-      border:1px solid var(--line);background:#171717;color:white;border-radius:14px;
-      padding:15px 19px;font-weight:800;cursor:pointer;transition:.2s
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn.primary{background:var(--orange);border-color:var(--orange);color:#160e09}
-    .hero-media{background:#111;position:relative}
-    .hero-media img{width:100%;height:100%;object-fit:cover}
-    .hero-label{
-      position:absolute;left:24px;bottom:24px;right:24px;
-      border:1px solid rgba(255,255,255,.1);background:rgba(8,8,8,.72);
-      backdrop-filter:blur(10px);border-radius:17px;padding:16px 18px
-    }
-    .hero-label strong{display:block;font-size:18px}
-    .hero-label span{display:block;color:#b9b3aa;font-size:13px;margin-top:4px}
-
-    section{padding:52px 0}
-    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
-    .section-head h2{font-size:38px;letter-spacing:-1.6px;margin:5px 0 0}
-    .section-head p{margin:0;color:var(--muted);font-size:14px}
-
-    .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .category{
-      min-height:220px;border:1px solid var(--line);border-radius:var(--radius);
-      background:linear-gradient(155deg,#171717,#101010);padding:24px;position:relative;overflow:hidden
-    }
-    .category h3{font-size:20px;margin:0 0 9px}
-    .category p{max-width:175px;color:var(--muted);font-size:13px;line-height:1.55;margin:0}
-    .shape{
-      width:140px;height:140px;position:absolute;right:-28px;bottom:-28px;border-radius:32px;
-      transform:rotate(24deg);border:1px solid #3b3b3b;background:linear-gradient(135deg,#2e2e2e,#141414)
-    }
-    .category:first-child .shape{background:linear-gradient(135deg,#ff8b42,#4b1e08)}
-
-    .products{display:grid;grid-template-columns:1.25fr .75fr;gap:18px}
-    .feature-card,.side-card{
-      border:1px solid var(--line);border-radius:26px;background:#111;overflow:hidden
-    }
-    .feature-card{display:grid;grid-template-columns:1.05fr .95fr}
-    .product-image{background:#0d0d0d;min-height:520px}
-    .product-image img{width:100%;height:100%;object-fit:cover}
-    .product-copy{padding:38px;display:flex;flex-direction:column;justify-content:center}
-    .product-copy h3{font-size:36px;letter-spacing:-1.5px;margin:10px 0}
-    .product-copy p{color:var(--muted);line-height:1.6}
-    .price{font-size:26px;font-weight:900;margin:22px 0}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
-    .chip{border:1px solid var(--line);background:#161616;padding:8px 10px;border-radius:999px;font-size:12px;color:#d4d0ca}
-    .side-card{padding:30px;display:flex;flex-direction:column;justify-content:space-between;min-height:520px;
-      background:linear-gradient(160deg,rgba(255,122,47,.09),transparent 45%),#111}
-    .side-card h3{font-size:32px;margin:8px 0 10px}
-    .side-card p{color:var(--muted);line-height:1.6}
-    .placeholder{
-      height:230px;border-radius:20px;border:1px dashed #3b3b3b;margin-top:24px;
-      display:grid;place-items:center;color:#6f6a64;background:#0e0e0e;text-align:center;padding:24px
-    }
-
-    .custom{
-      border:1px solid var(--line);border-radius:28px;padding:46px;
-      background:linear-gradient(120deg,rgba(255,122,47,.12),transparent 44%),#111;
-      display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center
-    }
-    .custom h2{font-size:46px;letter-spacing:-2px;margin:8px 0 14px}
-    .custom p{color:var(--muted);line-height:1.6;max-width:640px}
-    .custom-art{
-      min-height:270px;border-radius:22px;border:1px solid #2b2b2b;
-      background:repeating-linear-gradient(0deg,transparent 0 14px,rgba(255,255,255,.025) 15px),linear-gradient(145deg,#222,#101010);
-      position:relative;overflow:hidden
-    }
-    .custom-art:before{
-      content:"";position:absolute;width:140px;height:140px;border:18px solid var(--orange);
-      border-radius:34px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);
-      box-shadow:0 0 50px rgba(255,122,47,.18)
-    }
-
-    .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .benefit{border:1px solid var(--line);background:#101010;border-radius:18px;padding:22px}
-    .benefit b{display:block;margin-bottom:6px}
-    .benefit span{font-size:13px;color:var(--muted)}
-
-    footer{border-top:1px solid var(--line);padding:48px 0 28px;background:#090909;margin-top:38px}
-    .footgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:34px}
-    .footgrid h4{margin:0 0 12px}
-    .footgrid a,.footgrid p{display:block;color:var(--muted);font-size:14px;margin:8px 0;line-height:1.6}
-    .copy{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);color:#777;font-size:13px}
-
-    .mobilebar{display:none}
-    @media(max-width:900px){
-      .navlinks{display:none}
-      .hero-grid,.products,.custom{grid-template-columns:1fr}
-      .hero-copy{min-height:auto;padding:42px 28px}
-      .hero-media{min-height:480px}
-      .categories,.benefits{grid-template-columns:repeat(2,1fr)}
-      .feature-card{grid-template-columns:1fr}
-      .footgrid{grid-template-columns:1fr 1fr}
-    }
-    @media(max-width:560px){
-      body{padding-bottom:74px}
-      .nav{height:66px}.brand{font-size:20px}.actions .pill:first-child{display:none}
-      .hero{padding-top:26px}
-      h1{font-size:58px;letter-spacing:-3px}
-      .hero-copy p{font-size:16px}
-      .hero-media{min-height:390px}
-      .categories,.benefits{grid-template-columns:1fr}
-      .feature-card{display:block}
-      .product-image{min-height:390px}
-      .product-copy,.side-card,.custom{padding:26px}
-      .product-copy h3{font-size:30px}
-      .custom h2{font-size:36px}
-      .footgrid{grid-template-columns:1fr}
-      .mobilebar{
-        position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:repeat(4,1fr);
-        background:rgba(11,11,11,.95);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:9px 8px 11px
-      }
-      .mobilebar a{text-align:center;color:#bbb;font-size:11px}
-      .mobilebar b{display:block;color:#fff;font-size:17px;margin-bottom:2px}
-    }
-
-    .lang-btn{min-width:88px}
-    .wa-float{
-      position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;border-radius:50%;
-      display:grid;place-items:center;background:#25D366;box-shadow:0 12px 34px rgba(0,0,0,.42);
-      border:0;cursor:pointer;transition:.2s
-    }
-    .wa-float:hover{transform:translateY(-3px) scale(1.03)}
-    .wa-float svg{width:31px;height:31px;fill:white}
-    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .info-card{border:1px solid var(--line);background:#101010;border-radius:22px;padding:25px}
-    .info-card h3{margin:5px 0 12px;font-size:21px}
-    .info-card p,.info-card li{color:var(--muted);font-size:14px;line-height:1.7}
-    .info-card ul{padding-left:19px;margin:8px 0 0}
-    .policy-box{border:1px solid var(--line);background:#101010;border-radius:26px;padding:30px;margin-top:18px}
-    .policy-box h3{margin:0 0 12px;font-size:24px}
-    .policy-box p,.policy-box li{color:var(--muted);line-height:1.75;font-size:14px}
-    .policy-box ul{padding-left:20px}
-    [dir="rtl"] body{text-align:right}
-    [dir="rtl"] .info-card ul,[dir="rtl"] .policy-box ul{padding-left:0;padding-right:20px}
-    [dir="rtl"] .hero-label{left:24px;right:24px}
-    @media(max-width:900px){.info-grid{grid-template-columns:1fr}}
-    @media(max-width:560px){.wa-float{right:16px;bottom:88px;width:54px;height:54px}}
-
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>FIX3D.AE — Marshal Holder V3</title>
+<meta name="description" content="Marshal Holder V3 by FIX3D.AE. AED 250 including VAT.">
+<style>
+:root{--bg:#090909;--panel:#111;--text:#f6f3ed;--muted:#aaa39a;--line:#282828;--accent:#ff7a2f;--green:#25D366}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,rgba(255,122,47,.12),transparent 28rem),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}a{text-decoration:none;color:inherit}.wrap{width:min(1120px,92vw);margin:auto}.top{padding:10px 14px;text-align:center;font-size:12px;color:#d7d1c8;border-bottom:1px solid #1d1d1d}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06)}.brand{font-size:24px;font-weight:900;letter-spacing:-1px;display:flex;gap:11px;align-items:center}.cube{width:34px;height:34px;border:2px solid var(--accent);border-radius:10px;position:relative}.cube:after{content:"";position:absolute;width:12px;height:12px;left:9px;top:9px;background:var(--accent);transform:rotate(45deg);border-radius:2px}.lang{border:1px solid var(--line);background:#141414;color:#fff;border-radius:999px;padding:10px 14px;cursor:pointer}.hero{padding:42px 0 56px}.card{display:grid;grid-template-columns:1.08fr .92fr;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:linear-gradient(145deg,#151515,#0d0d0d);box-shadow:0 24px 70px rgba(0,0,0,.36)}.image{min-height:650px;background:#0d0d0d}.image img{width:100%;height:100%;object-fit:cover;display:block}.copy{padding:54px;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-size:12px;letter-spacing:2px;color:#ff9a57;font-weight:800}.copy h1{font-size:clamp(42px,6vw,72px);line-height:.95;letter-spacing:-3px;margin:14px 0 20px}.desc{color:var(--muted);font-size:17px;line-height:1.7}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.chip{border:1px solid var(--line);background:#161616;padding:8px 11px;border-radius:999px;font-size:12px;color:#d6d0c8}.price{font-size:42px;font-weight:900;margin:14px 0 4px}.vat{color:#c8c1b8;font-size:14px;margin-bottom:24px}.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#1b1009;border:0;border-radius:14px;padding:16px 20px;font-weight:900;cursor:pointer;font-size:16px}.notice{margin-top:18px;padding:15px 16px;border:1px solid #3b3028;background:#15110e;border-radius:14px;color:#cfc6bd;font-size:13px;line-height:1.55}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.fact{border:1px solid var(--line);background:#101010;border-radius:18px;padding:20px}.fact b{display:block;margin-bottom:7px}.fact span{font-size:13px;color:var(--muted);line-height:1.5}.footer{border-top:1px solid var(--line);padding:30px 0 44px;color:#777;font-size:13px;text-align:center}.wa{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:var(--green);display:grid;place-items:center;box-shadow:0 12px 34px rgba(0,0,0,.45);font-size:27px;color:white;font-weight:900}
+[dir="rtl"] body{text-align:right}
+@media(max-width:850px){.card{grid-template-columns:1fr}.image{min-height:460px}.copy{padding:34px}.facts{grid-template-columns:1fr}}
+@media(max-width:520px){.hero{padding-top:24px}.image{min-height:360px}.copy{padding:26px}.price{font-size:36px}.copy h1{font-size:44px;letter-spacing:-2px}.wa{width:54px;height:54px;right:15px;bottom:15px}}
+</style>
 </head>
 <body>
-  <div class="announcement" data-en="3D printed in the UAE • Custom orders available" data-ar="طباعة ثلاثية الأبعاد في الإمارات • الطلبات الخاصة متوفرة">3D printed in the UAE • Custom orders available</div>
-
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#home"><span class="cube"></span>FIX3D.AE</a>
-      <nav class="navlinks">
-        <a href="#shop" data-en="Shop" data-ar="المتجر">Shop</a>
-        <a href="#categories" data-en="Categories" data-ar="الأقسام">Categories</a>
-        <a href="#custom" data-en="Custom Orders" data-ar="طلبات خاصة">Custom Orders</a>
-        <a href="#about" data-en="About" data-ar="عن FIX3D">About</a>
-      </nav>
-      <div class="actions">
-        <button class="pill lang-btn" id="langBtn" onclick="toggleLanguage()">العربية</button>
-        <button class="pill" data-en="Bag 0" data-ar="السلة 0">Bag 0</button>
-      </div>
+<div class="top" data-en="3D printed in the UAE • One product available" data-ar="طباعة ثلاثية الأبعاد في الإمارات • منتج واحد متوفر">3D printed in the UAE • One product available</div>
+<div class="wrap nav">
+  <div class="brand"><span class="cube"></span>FIX3D.AE</div>
+  <button class="lang" id="langBtn" onclick="toggleLang()">العربية</button>
+</div>
+<main class="wrap hero">
+  <article class="card">
+    <div class="image"><img src="assets/marshal-holder-v3.png" alt="Marshal Holder V3"></div>
+    <div class="copy">
+      <div class="eyebrow">HOLDER • V3</div>
+      <h1>Marshal Holder V3</h1>
+      <p class="desc" data-en="Strong, clean and practical. Designed for a secure fit with a premium black finish and a compact footprint." data-ar="قوي وعملي ومرتب. مصمم لتثبيت آمن مع تشطيب أسود أنيق وحجم مدمج.">Strong, clean and practical. Designed for a secure fit with a premium black finish and a compact footprint.</p>
+      <div class="chips"><span class="chip">PETG</span><span class="chip" data-en="Made in UAE" data-ar="صنع في الإمارات">Made in UAE</span><span class="chip" data-en="Printed to order" data-ar="يطبع حسب الطلب">Printed to order</span></div>
+      <div class="price"><span data-en="AED 250" data-ar="250 درهم">AED 250</span></div>
+      <div class="vat" data-en="VAT included" data-ar="شامل ضريبة القيمة المضافة">VAT included</div>
+      <button class="btn" onclick="orderNow()" data-en="Order on WhatsApp" data-ar="اطلب عبر واتساب">Order on WhatsApp</button>
+      <div class="notice" data-en="Material notice: Printed in PETG. Avoid prolonged exposure to high heat, especially around 65–80°C and above." data-ar="تنويه المادة: المنتج مطبوع بمادة PETG. يُنصح بتجنب التعرض الطويل للحرارة العالية، خصوصاً في نطاق 65–80°م وما فوق.">Material notice: Printed in PETG. Avoid prolonged exposure to high heat, especially around 65–80°C and above.</div>
     </div>
-  </header>
-
-  <main id="home">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow" data-en="DESIGNED • PRINTED • MADE IN UAE" data-ar="مصمم • مطبوع • صنع في الإمارات">DESIGNED • PRINTED • MADE IN UAE</div>
-          <h1 data-en="Built to fit.<br>Made to last." data-ar="مصمم ليناسبك.<br>ومصنوع ليدوم.">Built to fit.<br>Made to last.</h1>
-          <p data-en="Functional 3D printed products, accessories and custom parts with clean design and practical purpose." data-ar="منتجات وإكسسوارات وقطع مخصصة مطبوعة ثلاثية الأبعاد، بتصميم مرتب واستخدام عملي.">Functional 3D printed products, accessories and custom parts with clean design and practical purpose.</p>
-          <div class="ctas">
-            <a class="btn primary" href="#shop" data-en="Shop products" data-ar="تسوق المنتجات">Shop products</a>
-            <a class="btn" href="#custom" data-en="Custom order" data-ar="طلب خاص">Custom order</a>
-          </div>
-        </div>
-
-        <div class="hero-media">
-          <img src="assets/marshal-holder-v3.png" alt="Marshal Holder V3">
-          <div class="hero-label">
-            <strong>Marshal Holder V3</strong>
-            <span data-en="Premium 3D printed holder • Black finish" data-ar="حامل مطبوع ثلاثي الأبعاد • تشطيب أسود">Premium 3D printed holder • Black finish</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="categories">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">DISCOVER</div><h2>Shop by category</h2></div>
-          <p>More products coming soon.</p>
-        </div>
-        <div class="categories">
-          <a class="category" href="#shop"><h3>Holders & Mounts</h3><p>Purpose-built holders for everyday use.</p><div class="shape"></div></a>
-          <a class="category" href="#shop"><h3>Car Accessories</h3><p>Useful interior parts and organizers.</p><div class="shape"></div></a>
-          <a class="category" href="#shop"><h3>Desk & Home</h3><p>Minimal, practical objects for daily setups.</p><div class="shape"></div></a>
-          <a class="category" href="#custom"><h3>Custom Prints</h3><p>Send your idea, photo or STL.</p><div class="shape"></div></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="shop">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow">FEATURED PRODUCT</div><h2>Fresh from FIX3D</h2></div>
-          <p>Real products. Printed locally.</p>
-        </div>
-
-        <div class="products">
-          <article class="feature-card">
-            <div class="product-image">
-              <img src="assets/marshal-holder-v3.png" alt="Marshal Holder V3 front view">
-            </div>
-            <div class="product-copy">
-              <div class="eyebrow">HOLDER • V3</div>
-              <h3>Marshal Holder V3</h3>
-              <p>Strong, clean and practical. Designed for a secure fit with a premium black finish and a compact footprint.</p>
-              <div class="chips">
-                <span class="chip">3D Printed</span>
-                <span class="chip">Made in UAE</span>
-                <span class="chip">Black</span>
-                <span class="chip">Printed to order</span>
-              </div>
-              <div class="price" data-en="Price on request" data-ar="السعر عند الطلب">Price on request</div>
-              <button class="btn primary" onclick="order('Marshal Holder V3')" data-en="Order on WhatsApp" data-ar="اطلب عبر واتساب">Order on WhatsApp</button>
-            </div>
-          </article>
-
-          <aside class="side-card">
-            <div>
-              <div class="eyebrow">COMING NEXT</div>
-              <h3>Your next products.</h3>
-              <p>Send more photos and they can be added here with the same studio style and their own product pages.</p>
-            </div>
-            <div class="placeholder">Next product image<br>will appear here</div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section id="custom">
-      <div class="wrap custom">
-        <div>
-          <div class="eyebrow">CUSTOM DESIGN SERVICE</div>
-          <h2>Need something specific?</h2>
-          <p>Send a photo, sketch, STL or describe what you need. We can help turn it into a custom 3D printed part.</p>
-          <div class="ctas">
-            <button class="btn primary" onclick="customOrder()">Start custom order</button>
-            <a class="btn" href="#shop">View products</a>
-          </div>
-        </div>
-        <div class="custom-art"></div>
-      </div>
-    </section>
-
-
-    <section id="shipping">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="eyebrow" data-en="DELIVERY & PAYMENT" data-ar="التوصيل والدفع">DELIVERY & PAYMENT</div>
-          <h2 data-en="Simple delivery across the UAE & GCC" data-ar="توصيل سهل داخل الإمارات ودول الخليج">Simple delivery across the UAE & GCC</h2></div>
-        </div>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="eyebrow">UAE</div>
-            <h3 data-en="UAE Delivery" data-ar="التوصيل داخل الإمارات">UAE Delivery</h3>
-            <p data-en="AED 30 delivery across the UAE. Western Region delivery is AED 50. Standard delivery is within up to 4 days."
-               data-ar="التوصيل داخل الإمارات 30 درهم. المنطقة الغربية 50 درهم. التوصيل العادي خلال مدة تصل إلى 4 أيام.">
-               AED 30 delivery across the UAE. Western Region delivery is AED 50. Standard delivery is within up to 4 days.
-            </p>
-          </div>
-          <div class="info-card">
-            <div class="eyebrow">COD</div>
-            <h3 data-en="Cash on Delivery" data-ar="الدفع عند الاستلام">Cash on Delivery</h3>
-            <p data-en="Cash on delivery is available in the UAE only. COD orders are prepared in one day and delivered the following day, normally within 2 days."
-               data-ar="الدفع كاش عند الاستلام متوفر داخل الإمارات فقط. يتم تجهيز طلبات الدفع عند الاستلام خلال يوم والتوصيل في اليوم التالي، وعادة خلال يومين.">
-               Cash on delivery is available in the UAE only. COD orders are prepared in one day and delivered the following day, normally within 2 days.
-            </p>
-          </div>
-          <div class="info-card">
-            <div class="eyebrow">GCC</div>
-            <h3 data-en="GCC Delivery" data-ar="التوصيل لدول الخليج">GCC Delivery</h3>
-            <p data-en="Delivery is available across GCC countries starting from AED 85. Estimated delivery time is 4–7 days."
-               data-ar="نوصل إلى جميع أنحاء دول الخليج، وتبدأ تكلفة الشحن من 85 درهم. مدة التوصيل المتوقعة من 4 إلى 7 أيام.">
-               Delivery is available across GCC countries starting from AED 85. Estimated delivery time is 4–7 days.
-            </p>
-          </div>
-        </div>
-
-        <div class="policy-box" id="returns">
-          <h3 data-en="Returns & Inspection Policy" data-ar="سياسة الاسترجاع وفحص الطلب">Returns & Inspection Policy</h3>
-          <ul>
-            <li data-en="You may inspect the product when the courier arrives and before paying the courier."
-                data-ar="يحق لك فحص المنتج عند استلام الطلب وقبل الدفع للمندوب.">You may inspect the product when the courier arrives and before paying the courier.</li>
-            <li data-en="If the product arrives damaged or you do not wish to accept it after inspection, you may return it immediately without paying the courier."
-                data-ar="إذا كان المنتج متضرراً أو لم ترغب باستلامه بعد فحصه، يحق لك إرجاعه في نفس اللحظة بدون دفع للمندوب.">If the product arrives damaged or you do not wish to accept it after inspection, you may return it immediately without paying the courier.</li>
-            <li data-en="After accepting the order, return requests must be made within 48 hours of delivery."
-                data-ar="بعد استلام الطلب، يجب طلب الاسترجاع خلال 48 ساعة من وقت الاستلام.">After accepting the order, return requests must be made within 48 hours of delivery.</li>
-            <li data-en="Returned products must be in the same condition in which they were received, without damage, modification or signs of use."
-                data-ar="يشترط أن يكون المنتج المرتجع بنفس حالته وقت الاستلام، بدون تلف أو تعديل أو آثار استخدام.">Returned products must be in the same condition in which they were received, without damage, modification or signs of use.</li>
-            <li data-en="Custom-made or personalized products cannot be returned after acceptance unless they arrive damaged or materially different from the agreed specification."
-                data-ar="المنتجات المصنوعة حسب الطلب أو المخصصة لا يمكن إرجاعها بعد قبولها إلا إذا وصلت متضررة أو مختلفة بشكل جوهري عن المواصفات المتفق عليها.">Custom-made or personalized products cannot be returned after acceptance unless they arrive damaged or materially different from the agreed specification.</li>
-          </ul>
-        </div>
-
-        
-        <div class="policy-box" id="material-notice">
-          <h3 data-en="PETG Material & Heat Notice" data-ar="تنويه مادة PETG والحرارة">PETG Material & Heat Notice</h3>
-          <p data-en="All FIX3D.AE products are 3D printed using PETG. PETG heat resistance can vary depending on the product design, load and conditions. To prevent deformation or damage, avoid exposing products to temperatures above approximately 65–80°C, direct high heat, flames, or prolonged exposure inside very hot vehicles."
-             data-ar="جميع منتجات FIX3D.AE مطبوعة ثلاثية الأبعاد باستخدام مادة PETG. تختلف قدرة PETG على تحمل الحرارة حسب تصميم المنتج والضغط والظروف المحيطة. لتجنب التشوه أو التلف، يُنصح بعدم تعريض المنتجات لدرجات حرارة أعلى من حوالي 65–80°م، أو لمصدر حرارة مباشر أو لهب، أو تركها لفترات طويلة داخل مركبات شديدة الحرارة.">
-             All FIX3D.AE products are 3D printed using PETG. PETG heat resistance can vary depending on the product design, load and conditions. To prevent deformation or damage, avoid exposing products to temperatures above approximately 65–80°C, direct high heat, flames, or prolonged exposure inside very hot vehicles.
-          </p>
-        </div>
-
-<div class="policy-box" id="terms">
-          <h3 data-en="Order Policy" data-ar="سياسة الطلبات">Order Policy</h3>
-          <p data-en="Because our products are 3D printed, minor layer lines or small cosmetic variations may occur and are part of the manufacturing process. Product colors may vary slightly depending on material and screen display. Delivery estimates may be affected by courier delays or circumstances outside FIX3D.AE's control. By placing an order, the customer confirms the product details, quantity and delivery information."
-             data-ar="بما أن منتجاتنا مطبوعة بتقنية الطباعة ثلاثية الأبعاد، قد تظهر خطوط طبقات بسيطة أو اختلافات شكلية طفيفة وتعتبر جزءاً طبيعياً من عملية التصنيع. قد يختلف اللون بشكل بسيط حسب الخامة والشاشة. مواعيد التوصيل تقديرية وقد تتأثر بتأخير شركة الشحن أو ظروف خارجة عن سيطرة FIX3D.AE. عند تأكيد الطلب، يقر العميل بصحة تفاصيل المنتج والكمية وبيانات التوصيل.">
-             Because our products are 3D printed, minor layer lines or small cosmetic variations may occur and are part of the manufacturing process. Product colors may vary slightly depending on material and screen display. Delivery estimates may be affected by courier delays or circumstances outside FIX3D.AE's control. By placing an order, the customer confirms the product details, quantity and delivery information.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="wrap">
-        <div class="benefits">
-          <div class="benefit"><b>Made in UAE</b><span>Local production and fast turnaround.</span></div>
-          <div class="benefit"><b>Printed to order</b><span>Fresh prints instead of old inventory.</span></div>
-          <div class="benefit"><b>Custom options</b><span>Colors and sizing can be tailored where possible.</span></div>
-          <div class="benefit"><b>Functional design</b><span>Products built to solve real problems.</span></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="footgrid">
-        <div>
-          <div class="brand"><span class="cube"></span>FIX3D.AE</div>
-          <p>Modern 3D printed products and custom parts made in the UAE.</p>
-        </div>
-        <div><h4>Shop</h4><a href="#shop">Products</a><a href="#categories" data-en="Categories" data-ar="الأقسام">Categories</a><a href="#custom" data-en="Custom Orders" data-ar="طلبات خاصة">Custom Orders</a></div>
-        <div><h4>Support</h4><a href="#" onclick="customOrder();return false;">Contact</a><a href="#shipping" data-en="Shipping" data-ar="الشحن">Shipping</a><a href="#returns" data-en="Returns" data-ar="الاسترجاع">Returns</a></div>
-        <div><h4>Social</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="#" onclick="customOrder();return false;">WhatsApp</a></div>
-      </div>
-      <div class="copy">© 2026 FIX3D.AE. All rights reserved.</div>
-    </div>
-  </footer>
-
-<button class="wa-float" onclick="customOrder()" aria-label="WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.42c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.64.07-.29-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.51.07-.78.37-.27.29-1.03 1-1.03 2.44s1.05 2.83 1.2 3.03c.15.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.85.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.27.17-1.39-.07-.12-.27-.2-.56-.34zM16.04 3.2c-7.04 0-12.76 5.7-12.76 12.73 0 2.24.59 4.43 1.7 6.36L3.18 28.8l6.67-1.75a12.75 12.75 0 006.18 1.57h.01c7.03 0 12.76-5.71 12.76-12.73S23.08 3.2 16.04 3.2zm0 23.27h-.01a10.6 10.6 0 01-5.41-1.48l-.39-.23-3.96 1.04 1.06-3.86-.25-.4a10.55 10.55 0 01-1.63-5.61c0-5.84 4.76-10.59 10.61-10.59 5.85 0 10.6 4.75 10.6 10.59 0 5.84-4.76 10.59-10.62 10.59z"/></svg></button>
-
-  <div class="mobilebar">
-    <a href="#home"><b>⌂</b>Home</a>
-    <a href="#shop"><b>▦</b>Shop</a>
-    <a href="#custom"><b>✦</b>Custom</a>
-    <a href="#" onclick="customOrder();return false;"><b style="height:19px;display:grid;place-items:center"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.42c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.64.07-.29-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.51.07-.78.37-.27.29-1.03 1-1.03 2.44s1.05 2.83 1.2 3.03c.15.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.85.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.27.17-1.39-.07-.12-.27-.2-.56-.34zM16.04 3.2c-7.04 0-12.76 5.7-12.76 12.73 0 2.24.59 4.43 1.7 6.36L3.18 28.8l6.67-1.75a12.75 12.75 0 006.18 1.57h.01c7.03 0 12.76-5.71 12.76-12.73S23.08 3.2 16.04 3.2zm0 23.27h-.01a10.6 10.6 0 01-5.41-1.48l-.39-.23-3.96 1.04 1.06-3.86-.25-.4a10.55 10.55 0 01-1.63-5.61c0-5.84 4.76-10.59 10.61-10.59 5.85 0 10.6 4.75 10.6 10.59 0 5.84-4.76 10.59-10.62 10.59z"/></svg></b>WhatsApp</a>
+  </article>
+  <div class="facts">
+    <div class="fact"><b data-en="Secure fit" data-ar="تثبيت آمن">Secure fit</b><span data-en="Designed to keep your gear organized and held firmly." data-ar="مصمم لترتيب معداتك وتثبيتها بشكل محكم.">Designed to keep your gear organized and held firmly.</span></div>
+    <div class="fact"><b data-en="Local production" data-ar="إنتاج محلي">Local production</b><span data-en="3D printed locally in the UAE." data-ar="مطبوع ثلاثي الأبعاد محلياً في الإمارات.">3D printed locally in the UAE.</span></div>
+    <div class="fact"><b data-en="Price" data-ar="السعر">Price</b><span data-en="AED 250 total, VAT included." data-ar="الإجمالي 250 درهم شامل الضريبة.">AED 250 total, VAT included.</span></div>
   </div>
-
-  <script>
-
-    let currentLang = localStorage.getItem("fix3d_lang") || "en";
-    function applyLanguage(lang){
-      currentLang = lang;
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-      document.querySelectorAll("[data-en][data-ar]").forEach(el => {
-        el.innerHTML = el.getAttribute("data-" + lang);
-      });
-      const b = document.getElementById("langBtn");
-      if(b) b.textContent = lang === "en" ? "العربية" : "English";
-      localStorage.setItem("fix3d_lang", lang);
-    }
-    function toggleLanguage(){ applyLanguage(currentLang === "en" ? "ar" : "en"); }
-    document.addEventListener("DOMContentLoaded", () => applyLanguage(currentLang));
-
-    const WHATSAPP = "971501700099";
-
-    function order(product){
-      const message = encodeURIComponent(
-        "Hi FIX3D.AE, I would like to order: " + product
-      );
-      window.open("https://wa.me/" + WHATSAPP + "?text=" + message, "_blank");
-    }
-
-    function customOrder(){
-      const message = encodeURIComponent(
-        "Hi FIX3D.AE, I would like to request a custom 3D print."
-      );
-      window.open("https://wa.me/" + WHATSAPP + "?text=" + message, "_blank");
-    }
-  </script>
+</main>
+<footer class="footer"><div class="wrap">© 2026 FIX3D.AE</div></footer>
+<a class="wa" href="#" onclick="orderNow();return false" aria-label="WhatsApp">◉</a>
+<script>
+const WHATSAPP="971501700099";
+let lang=localStorage.getItem("fix3d-lang")||"en";
+function setLang(next){lang=next;document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";document.querySelectorAll("[data-en]").forEach(el=>el.textContent=el.getAttribute("data-"+lang));document.getElementById("langBtn").textContent=lang==="en"?"العربية":"English";localStorage.setItem("fix3d-lang",lang)}
+function toggleLang(){setLang(lang==="en"?"ar":"en")}
+function orderNow(){const msg=lang==="ar"?"مرحبا FIX3D.AE، أريد طلب Marshal Holder V3 بسعر 250 درهم شامل الضريبة.":"Hi FIX3D.AE, I would like to order Marshal Holder V3 for AED 250 including VAT.";window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank")}
+setLang(lang);
+</script>
 </body>
 </html>
